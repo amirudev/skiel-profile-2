@@ -15,6 +15,10 @@ body {
 	margin: 0;
 }
 
+body!important {
+	width: 100vw;
+}
+
 button {
 	font-family: 'Montserrat';
 	border: none;
@@ -66,13 +70,31 @@ button {
 }
 
 .floating-navbar {
-	position: absolute;
-	top: 155px;
+	position: fixed;
+	top: 0;
 	width: 100%;
+	background-color: #f5f7fa;
+	z-index: 100;
 }
 
 .floating-navbar > .content-container{
 	background-color: #f5f7fa;
+	display: flex;
+	justify-content: space-between;
+	min-height: 70px;
+}
+
+.floating-navbar .content-container .navbar-logo {
+	display: flex;
+}
+
+.floating-navbar .content-container .navbar-logo img {
+	padding: 1rem;
+	height: 54px;
+}
+
+.floating-navbar .content-container .navbar-logo .navbar-logo__name {
+	font-weight: bold;
 }
 
 .floating-navbar ul {
@@ -83,21 +105,47 @@ button {
 }
 
 .floating-navbar ul li {
-	padding: 1.5rem 0;
+	position: relative;
+	display: flex;
+	align-items: center;
 }
 
 .floating-navbar ul li a {
-	padding: 1.5rem;
+	padding: 0 1.5rem;
 	color: black;
 	text-decoration: none;
+	display: flex;
+	height: 100%;
+	align-items: center;
+	width: 100%;
+	min-height: 70px;
 }
 
 .floating-navbar .floating-navbar__dropdown {
+	display: none;
+	position: absolute;
+	left: 0;
+	top: 105px;
+	background-color: #f5f7fa;
+	min-width: 225px;
+}
+
+.floating-navbar ul li:hover > .floating-navbar__dropdown {
 	display: inline-block;
 }
 
-.floating-navbar .floating-navbar__dropdown.hide {
+.floating-navbar.top {
+	background-color: transparent;
+	position: absolute;
+	top: 155px;
+}
+
+.floating-navbar.top .navbar-logo {
 	display: none;
+}
+
+.floating-navbar.top .floating-navbar__dropdown {
+	top: 66px;
 }
 
 .hero {
@@ -111,7 +159,9 @@ button {
 }
 
 .main-content article {
-	margin-bottom: 3rem;
+	padding-top: 3rem;
+	position: relative;
+	background-color: white;
 }
 
 .main-content > .content-container {
@@ -146,6 +196,10 @@ button {
 	margin: 0 2rem;
 }
 
+.main-content .greeting .greeting-content .greeting-content__message p {
+	margin: 0;
+}
+
 .main-content .prodi-content {
 	display: flex;
 	flex-wrap: wrap;
@@ -162,18 +216,23 @@ button {
 .main-content .prodi-item {
 	flex: 0 0 auto;
 	width: 50%;
-	height: 250px;
+	height: 275px;
 	flex-grow: 1;
 	position: relative;
 }
 
 .main-content .prodi-item .prodi-item__information {
 	position: absolute;
-	bottom: 0;
+	top: 210px;
 	width: 100%;
 	background-color: #002A5E;
 	color: white;
 	height: 100%;
+	transition: 1s;
+}
+
+.main-content .prodi-item:hover > .prodi-item__information {
+	top: 0;
 }
 
 .main-content .prodi-item .prodi-item__content {
@@ -193,7 +252,6 @@ button {
 }
 
 .main-content .prodi-item .prodi-item__information .prodi-item__more-information {
-	/*display: none;*/
 	margin-top: 1rem;
 	flex-grow: 1;
 	display: flex;
